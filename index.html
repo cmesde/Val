@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Moooooooo!!!!!!</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #content {
+        text-align: center;
+    }
+    #gif {
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+    body{
+        background-color: bisque;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <img id="gif" src="/img/question.gif" alt="Heart GIF">
+        
+        <div id="content">
+            <h2 id="question">Will you be my valentine?</h2>
+            <!--<button onclick="pressYes()">Yes</button>
+            <button id="noButton" onclick="pressNo()">No</button>-->
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="pressYes()">Yes</button>
+            <button id="noButton" class="btn btn-danger btn-lg btn-block"onclick="pressNo()">No</button>
+        </div>
+
+    </div>
+
+<audio id="Pasilyo" src="Pasilyo.mp3"></audio>
+
+<script>
+    let noCount = 0;
+    let noNames = [
+        "No",
+        "Maybe No",
+        "Nooooo",
+        "I'm not sure",
+        "Wehhh!!!"
+    ];
+    let noQuestions = [
+        "bakit no agad ",
+        "cge na plssssss",
+        "😐",
+        "Sure kana sa sagot mo na no?",
+        "Tignan mo aalisin ko yung No!😜"
+    ];
+
+    function pressYes() {
+        document.getElementById('question').innerText = "Thank you for being my valentine loveeeeee!";
+        document.getElementById('gif').style.display = "inline";
+        document.getElementById('gif').src = "https://media.giphy.com/media/d31w24psGYeekCZy/giphy.gif";
+        playSong();
+    }
+
+    function pressNo() {
+        if (noCount < noQuestions.length) {
+            document.getElementById('question').innerText = noQuestions[noCount];
+            document.getElementById('noButton').innerText = noNames[noCount];
+            noCount++;
+        } else {
+            document.getElementById('content').removeChild(document.querySelector('#content button:last-child'));
+            document.getElementById('question').innerText = "So what's next? HAHAHA";
+        }
+    }
+
+    function playSong() {
+        let song = document.getElementById('Pasilyo');
+        song.volume = 0.25; // Set volume to 25%
+        song.play();
+    }
+</script>
+
+</body>
+</html>
